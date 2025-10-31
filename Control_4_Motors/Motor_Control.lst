@@ -1,0 +1,661 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.80 build 6738 
+                                                                                               Tue Oct 14 12:32:03 2025
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6738
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6738"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 3 "D:\Embedded\PIC16F877A\Projects\Control_4_Motors\Control_4_Motor.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 3 "D:\Embedded\PIC16F877A\Projects\Control_4_Motors\Control_4_Motor.c"
+    45  2007  3F3A               	dw 0X3F3A ;#
+    46                           	FNROOT	_main
+    47                           	global	_PORTB
+    48                           psect	maintext,global,class=CODE,delta=2
+    49                           global __pmaintext
+    50  0777                     __pmaintext:
+    51  0006                     _PORTB	set	6
+    52                           	global	_RCREG
+    53  001A                     _RCREG	set	26
+    54                           	global	_CREN
+    55  00C4                     _CREN	set	196
+    56                           	global	_RB0
+    57  0030                     _RB0	set	48
+    58                           	global	_RB1
+    59  0031                     _RB1	set	49
+    60                           	global	_RB2
+    61  0032                     _RB2	set	50
+    62                           	global	_RB3
+    63  0033                     _RB3	set	51
+    64                           	global	_RB4
+    65  0034                     _RB4	set	52
+    66                           	global	_RB5
+    67  0035                     _RB5	set	53
+    68                           	global	_RB6
+    69  0036                     _RB6	set	54
+    70                           	global	_RB7
+    71  0037                     _RB7	set	55
+    72                           	global	_RCIF
+    73  0065                     _RCIF	set	101
+    74                           	global	_SPEN
+    75  00C7                     _SPEN	set	199
+    76                           	global	_SPBRG
+    77  0099                     _SPBRG	set	153
+    78                           	global	_TRISB
+    79  0086                     _TRISB	set	134
+    80                           	global	_BRGH
+    81  04C2                     _BRGH	set	1218
+    82                           	global	_SYNC
+    83  04C4                     _SYNC	set	1220
+    84                           	global	_TRISC6
+    85  043E                     _TRISC6	set	1086
+    86                           	global	_TRISC7
+    87  043F                     _TRISC7	set	1087
+    88                           	global	_TXEN
+    89  04C5                     _TXEN	set	1221
+    90                           	file	"Motor_Control.as"
+    91                           	line	#
+    92                           psect cinit,class=CODE,delta=2
+    93                           global start_initialization
+    94  0773                     start_initialization:
+    95                           
+    96                           psect cinit,class=CODE,delta=2
+    97                           global end_of_initialization
+    98                           
+    99                           ;End of C runtime variable initialization code
+   100                           
+   101  0773                     end_of_initialization:
+   102  0773  0183               clrf status
+   103  0774  120A  118A  2F77   ljmp _main	;jump to C main() function
+   104                           psect	cstackCOMMON,class=COMMON,space=1
+   105                           global __pcstackCOMMON
+   106  0070                     __pcstackCOMMON:
+   107                           	global	?_main
+   108  0070                     ?_main:	; 0 bytes @ 0x0
+   109                           	global	??_main
+   110  0070                     ??_main:	; 0 bytes @ 0x0
+   111  0070                     	ds	1
+   112                           	global	main@data
+   113  0071                     main@data:	; 1 bytes @ 0x1
+   114  0071                     	ds	1
+   115 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+   116 ;;Auto spaces:   Size  Autos    Used
+   117 ;; COMMON          14      2       2
+   118 ;; BANK0           80      0       0
+   119 ;; BANK1           80      0       0
+   120 ;; BANK3           96      0       0
+   121 ;; BANK2           96      0       0
+   122                           
+   123 ;;
+   124 ;; Pointer list with targets:
+   125                           
+   126                           
+   127                           
+   128 ;;
+   129 ;; Critical Paths under _main in COMMON
+   130 ;;
+   131 ;;   None.
+   132 ;;
+   133 ;; Critical Paths under _main in BANK0
+   134 ;;
+   135 ;;   None.
+   136 ;;
+   137 ;; Critical Paths under _main in BANK1
+   138 ;;
+   139 ;;   None.
+   140 ;;
+   141 ;; Critical Paths under _main in BANK3
+   142 ;;
+   143 ;;   None.
+   144 ;;
+   145 ;; Critical Paths under _main in BANK2
+   146 ;;
+   147 ;;   None.
+   148                           
+   149 ;;
+   150 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   151 ;;
+   152                           
+   153 ;;
+   154 ;;Call Graph Tables:
+   155 ;;
+   156 ;; ---------------------------------------------------------------------------------
+   157 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   158 ;; ---------------------------------------------------------------------------------
+   159 ;; (0) _main                                                 2     2      0      60
+   160 ;;                                              0 COMMON     2     2      0
+   161 ;; ---------------------------------------------------------------------------------
+   162 ;; Estimated maximum stack depth 0
+   163 ;; ---------------------------------------------------------------------------------
+   164                           
+   165 ;; Call Graph Graphs:
+   166                           
+   167 ;; _main (ROOT)
+   168 ;;
+   169                           
+   170 ;; Address spaces:
+   171                           
+   172 ;;Name               Size   Autos  Total    Cost      Usage
+   173 ;;BITCOMMON            E      0       0       0        0.0%
+   174 ;;EEDATA             100      0       0       0        0.0%
+   175 ;;NULL                 0      0       0       0        0.0%
+   176 ;;CODE                 0      0       0       0        0.0%
+   177 ;;COMMON               E      2       2       1       14.3%
+   178 ;;BITSFR0              0      0       0       1        0.0%
+   179 ;;SFR0                 0      0       0       1        0.0%
+   180 ;;BITSFR1              0      0       0       2        0.0%
+   181 ;;SFR1                 0      0       0       2        0.0%
+   182 ;;STACK                0      0       0       2        0.0%
+   183 ;;ABS                  0      0       0       3        0.0%
+   184 ;;BITBANK0            50      0       0       4        0.0%
+   185 ;;BITSFR3              0      0       0       4        0.0%
+   186 ;;SFR3                 0      0       0       4        0.0%
+   187 ;;BANK0               50      0       0       5        0.0%
+   188 ;;BITSFR2              0      0       0       5        0.0%
+   189 ;;SFR2                 0      0       0       5        0.0%
+   190 ;;BITBANK1            50      0       0       6        0.0%
+   191 ;;BANK1               50      0       0       7        0.0%
+   192 ;;BITBANK3            60      0       0       8        0.0%
+   193 ;;BANK3               60      0       0       9        0.0%
+   194 ;;BITBANK2            60      0       0      10        0.0%
+   195 ;;BANK2               60      0       0      11        0.0%
+   196 ;;DATA                 0      0       0      12        0.0%
+   197                           
+   198                           	global	_main
+   199                           psect	maintext
+   200                           
+   201 ;; *************** function _main *****************
+   202 ;; Defined at:
+   203 ;;		line 6 in file "D:\Embedded\PIC16F877A\Projects\Control_4_Motors\Control_4_Motor.c"
+   204 ;; Parameters:    Size  Location     Type
+   205 ;;		None
+   206 ;; Auto vars:     Size  Location     Type
+   207 ;;  data            1    1[COMMON] unsigned char 
+   208 ;; Return value:  Size  Location     Type
+   209 ;;		None               void
+   210 ;; Registers used:
+   211 ;;		wreg, status,2, status,0
+   212 ;; Tracked objects:
+   213 ;;		On entry : 17F/0
+   214 ;;		On exit  : 0/0
+   215 ;;		Unchanged: 0/0
+   216 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   217 ;;      Params:         0       0       0       0       0
+   218 ;;      Locals:         1       0       0       0       0
+   219 ;;      Temps:          1       0       0       0       0
+   220 ;;      Totals:         2       0       0       0       0
+   221 ;;Total ram usage:        2 bytes
+   222 ;; This function calls:
+   223 ;;		Nothing
+   224 ;; This function is called by:
+   225 ;;		Startup code after reset
+   226 ;; This function uses a non-reentrant model
+   227 ;;
+   228                           psect	maintext
+   229                           	file	"D:\Embedded\PIC16F877A\Projects\Control_4_Motors\Control_4_Motor.c"
+   230                           	line	6
+   231                           	global	__size_of_main
+   232  0089                     	__size_of_main	equ	__end_of_main-_main
+   233                           	
+   234  0777                     _main:	
+   235                           	opt	stack 8
+   236                           ; Regs used in _main: [wreg+status,2+status,0]
+   237                           	line	7
+   238                           	
+   239  0777                     l945:	
+   240                           ;Control_4_Motor.c: 7: char data = 0;
+   241  0777  1003               	clrc
+   242  0778  3000               	movlw	0
+   243  0779  1803               	btfsc	status,0
+   244  077A  3001               	movlw	1
+   245  077B  00F1               	movwf	(main@data)
+   246                           	line	9
+   247                           	
+   248  077C                     l947:	
+   249                           ;Control_4_Motor.c: 9: TRISC7 = 1;
+   250  077C  1683               	bsf	status, 5	;RP0=1, select bank1
+   251  077D  1303               	bcf	status, 6	;RP1=0, select bank1
+   252  077E  1787               	bsf	(1087/8)^080h,(1087)&7
+   253                           	line	10
+   254                           	
+   255  077F                     l949:	
+   256                           ;Control_4_Motor.c: 10: TRISC6 = 0;
+   257  077F  1307               	bcf	(1086/8)^080h,(1086)&7
+   258                           	line	11
+   259                           	
+   260  0780                     l951:	
+   261                           ;Control_4_Motor.c: 11: TRISB = 0;
+   262  0780  0186               	clrf	(134)^080h	;volatile
+   263                           	line	12
+   264                           	
+   265  0781                     l953:	
+   266                           ;Control_4_Motor.c: 12: PORTB = 0;
+   267  0781  1283               	bcf	status, 5	;RP0=0, select bank0
+   268  0782  1303               	bcf	status, 6	;RP1=0, select bank0
+   269  0783  0186               	clrf	(6)	;volatile
+   270                           	line	16
+   271                           	
+   272  0784                     l955:	
+   273                           ;Control_4_Motor.c: 16: SPBRG = 129;
+   274  0784  3081               	movlw	(081h)
+   275  0785  1683               	bsf	status, 5	;RP0=1, select bank1
+   276  0786  1303               	bcf	status, 6	;RP1=0, select bank1
+   277  0787  0099               	movwf	(153)^080h	;volatile
+   278                           	line	17
+   279                           	
+   280  0788                     l957:	
+   281                           ;Control_4_Motor.c: 17: BRGH = 1;
+   282  0788  1518               	bsf	(1218/8)^080h,(1218)&7
+   283                           	line	18
+   284                           	
+   285  0789                     l959:	
+   286                           ;Control_4_Motor.c: 18: SYNC = 0;
+   287  0789  1218               	bcf	(1220/8)^080h,(1220)&7
+   288                           	line	19
+   289                           	
+   290  078A                     l961:	
+   291                           ;Control_4_Motor.c: 19: SPEN = 1;
+   292  078A  1283               	bcf	status, 5	;RP0=0, select bank0
+   293  078B  1303               	bcf	status, 6	;RP1=0, select bank0
+   294  078C  1798               	bsf	(199/8),(199)&7
+   295                           	line	20
+   296                           	
+   297  078D                     l963:	
+   298                           ;Control_4_Motor.c: 20: TXEN = 1;
+   299  078D  1683               	bsf	status, 5	;RP0=1, select bank1
+   300  078E  1303               	bcf	status, 6	;RP1=0, select bank1
+   301  078F  1698               	bsf	(1221/8)^080h,(1221)&7
+   302                           	line	21
+   303                           	
+   304  0790                     l965:	
+   305                           ;Control_4_Motor.c: 21: CREN = 1;
+   306  0790  1283               	bcf	status, 5	;RP0=0, select bank0
+   307  0791  1303               	bcf	status, 6	;RP1=0, select bank0
+   308  0792  1618               	bsf	(196/8),(196)&7
+   309  0793  2F95               	goto	l560
+   310                           	line	23
+   311                           ;Control_4_Motor.c: 23: while(1)
+   312                           	
+   313  0794                     l559:	
+   314                           	line	25
+   315                           ;Control_4_Motor.c: 24: {
+   316                           ;Control_4_Motor.c: 25: while(RCIF == 0);
+   317  0794  2F95               	goto	l560
+   318                           	
+   319  0795                     l561:	
+   320                           	
+   321  0795                     l560:	
+   322  0795  1E8C               	btfss	(101/8),(101)&7
+   323  0796  2F98               	goto	u11
+   324  0797  2F99               	goto	u10
+   325  0798                     u11:
+   326  0798  2F95               	goto	l560
+   327  0799                     u10:
+   328  0799  2F9A               	goto	l967
+   329                           	
+   330  079A                     l562:	
+   331                           	line	26
+   332                           	
+   333  079A                     l967:	
+   334                           ;Control_4_Motor.c: 26: data = RCREG;
+   335  079A  081A               	movf	(26),w	;volatile
+   336  079B  00F0               	movwf	(??_main+0)+0
+   337  079C  0870               	movf	(??_main+0)+0,w
+   338  079D  00F1               	movwf	(main@data)
+   339                           	line	28
+   340                           ;Control_4_Motor.c: 28: if(data == 'a')
+   341  079E  0871               	movf	(main@data),w
+   342  079F  3A61               	xorlw	061h
+   343  07A0  1D03               	skipz
+   344  07A1  2FA3               	goto	u21
+   345  07A2  2FA4               	goto	u20
+   346  07A3                     u21:
+   347  07A3  2FAD               	goto	l971
+   348  07A4                     u20:
+   349                           	line	30
+   350                           	
+   351  07A4                     l969:	
+   352                           ;Control_4_Motor.c: 29: {
+   353                           ;Control_4_Motor.c: 30: RB0 = 1;
+   354  07A4  1406               	bsf	(48/8),(48)&7
+   355                           	line	31
+   356                           ;Control_4_Motor.c: 31: RB1 = 0;
+   357  07A5  1086               	bcf	(49/8),(49)&7
+   358                           	line	32
+   359                           ;Control_4_Motor.c: 32: RB2 = 1;
+   360  07A6  1506               	bsf	(50/8),(50)&7
+   361                           	line	33
+   362                           ;Control_4_Motor.c: 33: RB3 = 0;
+   363  07A7  1186               	bcf	(51/8),(51)&7
+   364                           	line	34
+   365                           ;Control_4_Motor.c: 34: RB4 = 1;
+   366  07A8  1606               	bsf	(52/8),(52)&7
+   367                           	line	35
+   368                           ;Control_4_Motor.c: 35: RB5 = 0;
+   369  07A9  1286               	bcf	(53/8),(53)&7
+   370                           	line	36
+   371                           ;Control_4_Motor.c: 36: RB6 = 1;
+   372  07AA  1706               	bsf	(54/8),(54)&7
+   373                           	line	37
+   374                           ;Control_4_Motor.c: 37: RB7 = 0;
+   375  07AB  1386               	bcf	(55/8),(55)&7
+   376                           	line	38
+   377                           ;Control_4_Motor.c: 38: }
+   378  07AC  2F95               	goto	l560
+   379                           	line	39
+   380                           	
+   381  07AD                     l563:	
+   382                           	
+   383  07AD                     l971:	
+   384                           ;Control_4_Motor.c: 39: else if(data == 'b')
+   385  07AD  0871               	movf	(main@data),w
+   386  07AE  3A62               	xorlw	062h
+   387  07AF  1D03               	skipz
+   388  07B0  2FB2               	goto	u31
+   389  07B1  2FB3               	goto	u30
+   390  07B2                     u31:
+   391  07B2  2FBC               	goto	l975
+   392  07B3                     u30:
+   393                           	line	41
+   394                           	
+   395  07B3                     l973:	
+   396                           ;Control_4_Motor.c: 40: {
+   397                           ;Control_4_Motor.c: 41: RB0 = 0;
+   398  07B3  1006               	bcf	(48/8),(48)&7
+   399                           	line	42
+   400                           ;Control_4_Motor.c: 42: RB1 = 1;
+   401  07B4  1486               	bsf	(49/8),(49)&7
+   402                           	line	43
+   403                           ;Control_4_Motor.c: 43: RB2 = 0;
+   404  07B5  1106               	bcf	(50/8),(50)&7
+   405                           	line	44
+   406                           ;Control_4_Motor.c: 44: RB3 = 1;
+   407  07B6  1586               	bsf	(51/8),(51)&7
+   408                           	line	45
+   409                           ;Control_4_Motor.c: 45: RB4 = 0;
+   410  07B7  1206               	bcf	(52/8),(52)&7
+   411                           	line	46
+   412                           ;Control_4_Motor.c: 46: RB5 = 1;
+   413  07B8  1686               	bsf	(53/8),(53)&7
+   414                           	line	47
+   415                           ;Control_4_Motor.c: 47: RB6 = 0;
+   416  07B9  1306               	bcf	(54/8),(54)&7
+   417                           	line	48
+   418                           ;Control_4_Motor.c: 48: RB7 = 1;
+   419  07BA  1786               	bsf	(55/8),(55)&7
+   420                           	line	49
+   421                           ;Control_4_Motor.c: 49: }
+   422  07BB  2F95               	goto	l560
+   423                           	line	50
+   424                           	
+   425  07BC                     l565:	
+   426                           	
+   427  07BC                     l975:	
+   428                           ;Control_4_Motor.c: 50: else if(data == 'c')
+   429  07BC  0871               	movf	(main@data),w
+   430  07BD  3A63               	xorlw	063h
+   431  07BE  1D03               	skipz
+   432  07BF  2FC1               	goto	u41
+   433  07C0  2FC2               	goto	u40
+   434  07C1                     u41:
+   435  07C1  2FDA               	goto	l987
+   436  07C2                     u40:
+   437                           	line	52
+   438                           	
+   439  07C2                     l977:	
+   440                           ;Control_4_Motor.c: 51: {
+   441                           ;Control_4_Motor.c: 52: RB0=RB1=0;
+   442  07C2  1086               	bcf	(49/8),(49)&7
+   443  07C3  1006               	bcf	(48/8),(48)&7
+   444                           	line	53
+   445                           ;Control_4_Motor.c: 53: if(RB4==1 && RB5==0 )
+   446  07C4  1E06               	btfss	(52/8),(52)&7
+   447  07C5  2FC7               	goto	u51
+   448  07C6  2FC8               	goto	u50
+   449  07C7                     u51:
+   450  07C7  2FCE               	goto	l568
+   451  07C8                     u50:
+   452                           	
+   453  07C8                     l979:	
+   454  07C8  1A86               	btfsc	(53/8),(53)&7
+   455  07C9  2FCB               	goto	u61
+   456  07CA  2FCC               	goto	u60
+   457  07CB                     u61:
+   458  07CB  2FCE               	goto	l568
+   459  07CC                     u60:
+   460                           	line	55
+   461                           	
+   462  07CC                     l981:	
+   463                           ;Control_4_Motor.c: 54: {
+   464                           ;Control_4_Motor.c: 55: RB2=1;
+   465  07CC  1506               	bsf	(50/8),(50)&7
+   466                           	line	56
+   467                           ;Control_4_Motor.c: 56: RB3=0;
+   468  07CD  1186               	bcf	(51/8),(51)&7
+   469                           	line	58
+   470                           	
+   471  07CE                     l568:	
+   472                           	line	59
+   473                           ;Control_4_Motor.c: 58: }
+   474                           ;Control_4_Motor.c: 59: if(RB4==0 && RB5==1 )
+   475  07CE  1A06               	btfsc	(52/8),(52)&7
+   476  07CF  2FD1               	goto	u71
+   477  07D0  2FD2               	goto	u70
+   478  07D1                     u71:
+   479  07D1  2F95               	goto	l560
+   480  07D2                     u70:
+   481                           	
+   482  07D2                     l983:	
+   483  07D2  1E86               	btfss	(53/8),(53)&7
+   484  07D3  2FD5               	goto	u81
+   485  07D4  2FD6               	goto	u80
+   486  07D5                     u81:
+   487  07D5  2F95               	goto	l560
+   488  07D6                     u80:
+   489                           	line	61
+   490                           	
+   491  07D6                     l985:	
+   492                           ;Control_4_Motor.c: 60: {
+   493                           ;Control_4_Motor.c: 61: RB2=0;
+   494  07D6  1106               	bcf	(50/8),(50)&7
+   495                           	line	62
+   496                           ;Control_4_Motor.c: 62: RB3=1;
+   497  07D7  1586               	bsf	(51/8),(51)&7
+   498  07D8  2F95               	goto	l560
+   499                           	line	64
+   500                           	
+   501  07D9                     l569:	
+   502                           	line	66
+   503                           ;Control_4_Motor.c: 64: }
+   504                           ;Control_4_Motor.c: 66: }
+   505  07D9  2F95               	goto	l560
+   506                           	line	67
+   507                           	
+   508  07DA                     l567:	
+   509                           	
+   510  07DA                     l987:	
+   511                           ;Control_4_Motor.c: 67: else if(data == 'd')
+   512  07DA  0871               	movf	(main@data),w
+   513  07DB  3A64               	xorlw	064h
+   514  07DC  1D03               	skipz
+   515  07DD  2FDF               	goto	u91
+   516  07DE  2FE0               	goto	u90
+   517  07DF                     u91:
+   518  07DF  2F95               	goto	l560
+   519  07E0                     u90:
+   520                           	line	69
+   521                           	
+   522  07E0                     l989:	
+   523                           ;Control_4_Motor.c: 68: {
+   524                           ;Control_4_Motor.c: 69: RB2=RB3=0;
+   525  07E0  1186               	bcf	(51/8),(51)&7
+   526  07E1  1106               	bcf	(50/8),(50)&7
+   527                           	line	70
+   528                           ;Control_4_Motor.c: 70: if(RB4==1 && RB5==0 )
+   529  07E2  1E06               	btfss	(52/8),(52)&7
+   530  07E3  2FE5               	goto	u101
+   531  07E4  2FE6               	goto	u100
+   532  07E5                     u101:
+   533  07E5  2FEC               	goto	l572
+   534  07E6                     u100:
+   535                           	
+   536  07E6                     l991:	
+   537  07E6  1A86               	btfsc	(53/8),(53)&7
+   538  07E7  2FE9               	goto	u111
+   539  07E8  2FEA               	goto	u110
+   540  07E9                     u111:
+   541  07E9  2FEC               	goto	l572
+   542  07EA                     u110:
+   543                           	line	72
+   544                           	
+   545  07EA                     l993:	
+   546                           ;Control_4_Motor.c: 71: {
+   547                           ;Control_4_Motor.c: 72: RB0=1;
+   548  07EA  1406               	bsf	(48/8),(48)&7
+   549                           	line	73
+   550                           ;Control_4_Motor.c: 73: RB1=0;
+   551  07EB  1086               	bcf	(49/8),(49)&7
+   552                           	line	75
+   553                           	
+   554  07EC                     l572:	
+   555                           	line	76
+   556                           ;Control_4_Motor.c: 75: }
+   557                           ;Control_4_Motor.c: 76: if(RB4==0 && RB5==1 )
+   558  07EC  1A06               	btfsc	(52/8),(52)&7
+   559  07ED  2FEF               	goto	u121
+   560  07EE  2FF0               	goto	u120
+   561  07EF                     u121:
+   562  07EF  2F95               	goto	l560
+   563  07F0                     u120:
+   564                           	
+   565  07F0                     l995:	
+   566  07F0  1E86               	btfss	(53/8),(53)&7
+   567  07F1  2FF3               	goto	u131
+   568  07F2  2FF4               	goto	u130
+   569  07F3                     u131:
+   570  07F3  2F95               	goto	l560
+   571  07F4                     u130:
+   572                           	line	78
+   573                           	
+   574  07F4                     l997:	
+   575                           ;Control_4_Motor.c: 77: {
+   576                           ;Control_4_Motor.c: 78: RB0=0;
+   577  07F4  1006               	bcf	(48/8),(48)&7
+   578                           	line	79
+   579                           ;Control_4_Motor.c: 79: RB1=1;
+   580  07F5  1486               	bsf	(49/8),(49)&7
+   581  07F6  2F95               	goto	l560
+   582                           	line	81
+   583                           	
+   584  07F7                     l573:	
+   585  07F7  2F95               	goto	l560
+   586                           	line	83
+   587                           	
+   588  07F8                     l571:	
+   589  07F8  2F95               	goto	l560
+   590                           	line	85
+   591                           	
+   592  07F9                     l570:	
+   593  07F9  2F95               	goto	l560
+   594                           	
+   595  07FA                     l566:	
+   596  07FA  2F95               	goto	l560
+   597                           	
+   598  07FB                     l564:	
+   599  07FB  2F95               	goto	l560
+   600                           	
+   601  07FC                     l574:	
+   602                           	line	23
+   603  07FC  2F95               	goto	l560
+   604                           	
+   605  07FD                     l575:	
+   606                           	line	86
+   607                           	
+   608  07FD                     l576:	
+   609                           	global	start
+   610  07FD  120A  118A  2800   	ljmp	start
+   611                           	opt stack 0
+   612                           GLOBAL	__end_of_main
+   613  0800                     	__end_of_main:
+   614 ;; =============== function _main ends ============
+   615                           
+   616                           	signat	_main,88
+   617                           psect	maintext
+   618                           	global	btemp
+   619  007E                     	btemp set 07Eh
+   620                           
+   621                           	DABS	1,126,2	;btemp
+   622                           	global	wtemp0
+   623  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.80 build 6738 
+Symbol Table                                                                                   Tue Oct 14 12:32:03 2025
+
+                  u10 0799                    u11 0798                    u20 07A4                    u21 07A3  
+                  u30 07B3                    u31 07B2                    u40 07C2                    u41 07C1  
+                  u50 07C8                    u51 07C7                    u60 07CC                    u61 07CB  
+                  u70 07D2                    u71 07D1                    u80 07D6                    u81 07D5  
+                  u90 07E0                    u91 07DF                   l560 0795                   l561 0795  
+                 l570 07F9                   l562 079A                   l571 07F8                   l563 07AD  
+                 l564 07FB                   l572 07EC                   l573 07F7                   l565 07BC  
+                 l574 07FC                   l566 07FA                   l575 07FD                   l567 07DA  
+                 l559 0794                   l576 07FD                   l568 07CE                   l569 07D9  
+                 l951 0780                   l961 078A                   l953 0781                   l945 0777  
+                 l971 07AD                   l963 078D                   l955 0784                   l947 077C  
+                 l981 07CC                   l973 07B3                   l965 0790                   l957 0788  
+                 l949 077F                   l991 07E6                   l983 07D2                   l975 07BC  
+                 l967 079A                   l959 0789                   l993 07EA                   l985 07D6  
+                 l977 07C2                   l969 07A4                   l995 07F0                   l979 07C8  
+                 l987 07DA                   l997 07F4                   l989 07E0                   _RB0 0030  
+                 _RB1 0031                   _RB2 0032                   _RB3 0033                   _RB4 0034  
+                 _RB5 0035                   _RB6 0036                   _RB7 0037                   u100 07E6  
+                 u101 07E5                   u110 07EA                   u111 07E9                   u120 07F0  
+                 u121 07EF                   u130 07F4                   u131 07F3                  _BRGH 04C2  
+                _CREN 00C4                  _RCIF 0065                  _SPEN 00C7                  _TXEN 04C5  
+                _SYNC 04C4                  _main 0777                  btemp 007E                  start 0000  
+               ?_main 0070                 _RCREG 001A                 _SPBRG 0099                 _PORTB 0006  
+               _TRISB 0086                 status 0003                 wtemp0 007E          __end_of_main 0800  
+              ??_main 0070                _TRISC6 043E                _TRISC7 043F        __pcstackCOMMON 0070  
+          __pmaintext 0777  end_of_initialization 0773   start_initialization 0773         __size_of_main 0089  
+            main@data 0071  
